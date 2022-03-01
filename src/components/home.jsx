@@ -312,7 +312,6 @@ function Home()
                                         <div className="column">
                                         <div className="user-options">
                                             <a className="a-image" href={"http://localhost:5000/original/"+element.Id}><img loading="lazy" className="img-rendered" src={"http://localhost:5000/compress/"+element.Id} alt="" srcSet="" /></a>
-                                            {/* <div className="actions actions-hover"> */}
                                                 {
                                                     currentNav==="gallery"?
                                                     (
@@ -322,17 +321,17 @@ function Home()
                                                             <span onClick={()=>{addTo("settrash",element)}} className="material-icons action-icons">delete</span>
                                                             </div>
                                                         
-                                                    ):(
+                                                    ):( {
                                                         currentNav==="fav"?
-                                                       <div  className="actions actions-hover">
+                                                       (<div  className="actions actions-hover">
                                                             <span  onClick={()=>{removeFrom("removefav",element)}} class="material-icons-outlined action-icons">remove_circle</span>
-                                                        </div>
-                                                        :
+                                                        </div>)
+                                                        :(
                                                             <div  className="actions actions-hover">
                                                                 <span  onClick={()=>{removeFrom("removetrash",element)}} class="material-icons-outlined action-icons">add_circle</span>
                                                             </div>
-                                                        
-                                                    )
+                                                        )
+                                                         } )
                                                 }
                                         </div>
                                         </div>
