@@ -324,14 +324,14 @@ function Home()
                                                         
                                                     ):(
                                                         currentNav==="fav"?
-                                                       (<div  className="actions actions-hover">
+                                                       <div  className="actions actions-hover">
                                                             <span  onClick={()=>{removeFrom("removefav",element)}} class="material-icons-outlined action-icons">remove_circle</span>
-                                                        </div>)
-                                                        :(
+                                                        </div>
+                                                        :
                                                             <div  className="actions actions-hover">
                                                                 <span  onClick={()=>{removeFrom("removetrash",element)}} class="material-icons-outlined action-icons">add_circle</span>
                                                             </div>
-                                                        )
+                                                        
                                                     )
                                                 }
                                         </div>
