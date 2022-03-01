@@ -217,7 +217,7 @@ app.get('/original/:id', isLoggedIn, (req,res)=>{
         if (err)
         {
             console.log(err)
-        };
+        }
         // console.log(result)
         res.sendFile(__dirname+`/uploads/${req.user.id}/original/`+result[0].fileId)
     });
@@ -229,7 +229,7 @@ app.get('/compress/:id', isLoggedIn, (req,res)=>{
         if (err)
         {
             console.log(err)
-        };
+        }
         if(result && result.length>0)
         res.sendFile(__dirname+`/uploads/${req.user.id}/compressed/`+result[0].fileId)
     });
