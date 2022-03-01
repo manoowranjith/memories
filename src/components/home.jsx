@@ -1,32 +1,15 @@
 import React from "react";
 import axios from "axios";
 import swal from 'sweetalert';
-// swal({
-//     title: "API service unavailable",
-//     icon: "error",
-//     buttons: false,
-//     className: "sweet-alert",
-//   });
 
 function Home()
 {
-    // const [greet, setGreet]=React.useState()
     const [storage, setStorage]=React.useState(0)
-    // const [dp, setDp]=React.useState()
     const [name, setName]=React.useState()
     const [allImages, setAllImages]=React.useState([]) 
     const [currentNav, setCurrentNav]=React.useState("gallery")
     const [progressStatus, setProgressStatus]=React.useState(0)
     React.useEffect(()=>{
-
-        // var myDate = new Date();
-        // var hrs = myDate.getHours();
-        // if (hrs < 12)
-        // setGreet('Good Morning 🌅')
-        // else if (hrs >= 12 && hrs <= 17)
-        // setGreet('Good Afternoon ☀️')
-        // else if (hrs >= 17 && hrs <= 24)
-        // setGreet('Good Evening 🌄')
 
         var options = {
             method: 'GET',
@@ -35,7 +18,6 @@ function Home()
 
         axios.request(options).then(function (response) 
         {
-            // setDp(response.data[0].dp)
             setStorage(response.data[0].storage)
             setName(response.data[0].name)
             console.log(response.data[0])
@@ -97,7 +79,6 @@ function Home()
                 return;
             }
         
-            // alert('You have chosen the file ' + file.name);
             if(Math.ceil((storage+(file.size)/1024)/1024)>=100)
             {
                 swal({
@@ -173,8 +154,6 @@ function Home()
         }
         else{
             document.getElementById('progress').style.display='block';
-            // var dom = document.getElementById('progress');
-            // dom.style.backgroundImage = `linear-gradient(90deg,#000000 ${progressStatus.toString()}%,#ffffff)`
             document.getElementById('progress').style.width=`${(progressStatus/100)*160}px`;
         }
     },[progressStatus])
@@ -355,7 +334,6 @@ function Home()
                                                         )
                                                     )
                                                 }
-                                            {/* </div> */}
                                         </div>
                                         </div>
                                     )
