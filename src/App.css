@@ -47,6 +47,9 @@
 }
 .storage{
     margin-top: 5vh;
+    text-align: center;
+    font-size: 24px;
+    font-weight: 700;
 }
 .brand{
     display: flex;
@@ -90,11 +93,6 @@
     align-items: center;
     justify-content: center;
     margin: 25px;    
-}
-.storage{
-    text-align: center;
-    font-size: 24px;
-    font-weight: 700;
 }
 .google-signin{
     display: flex;
