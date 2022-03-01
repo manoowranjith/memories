@@ -29,10 +29,13 @@ function handleDisconnect()
         {
             if(result && result.length===0)
             {
-                var sql = "CREATE TABLE users (id VARCHAR(255), name VARCHAR(255), email VARCHAR(255), dp VARCHAR(255),  storage INT, PRIMARY KEY(id))";
-                connection.query(sql, function (err, result) {
-                    if (err) throw err;
+                sql = "CREATE TABLE users (id VARCHAR(255), name VARCHAR(255), email VARCHAR(255), dp VARCHAR(255),  storage INT, PRIMARY KEY(id))";
+                connection.query(sql, function (err1, result1) {
+                    if (err1) throw err;
+                    else
+                    {
                         console.log("Master Table created!");
+                    }
                 });
             }
             else
@@ -100,7 +103,7 @@ app.get('/protected', isLoggedIn, (req, res) => {
         fs.mkdirSync(compressed,  { recursive: true });
         fs.mkdirSync(original,  { recursive: true });
         const file = fs.createWriteStream(dir+"dp.jpg");
-        const request = https.get(`${req.user.picture}`, function(response) {
+        https.get(`${req.user.picture}`, function(response) {
             response.pipe(file);
         });
     }
@@ -110,18 +113,16 @@ app.get('/protected', isLoggedIn, (req, res) => {
     {
         if(result && result.length === 0)
         {
-            var sql = `INSERT INTO users (id, name, email, dp, storage) VALUES ('${req.user.id}', '${req.user.displayName}', '${req.user.email}', '${req.user.picture}', 0)`
-            connection.query(sql, function (err, result) {
-                if (err)
+            sql = `INSERT INTO users (id, name, email, dp, storage) VALUES ('${req.user.id}', '${req.user.displayName}', '${req.user.email}', '${req.user.picture}', 0)`
+            connection.query(sql, function (err1, result1) {
+                if (err1)
                 {
-                   console.log(err)
-                };
+                   console.log(err1)
+                }
             });
-            // console.log(req.user)
         }
         else{
             console.log('already user in master table')
-            // console.log(req.user)
         }
     });
     
@@ -131,12 +132,12 @@ app.get('/protected', isLoggedIn, (req, res) => {
         if(result && result.length === 0)
         {
             var sql2 = `CREATE TABLE ${md5(req.user.id)} (Id VARCHAR(255), fileId VARCHAR(255), fileName VARCHAR(255), favourite BOOLEAN,  trash BOOLEAN, storage INT, PRIMARY KEY(Id))`;
-            connection.query(sql2, function (err, result) {
-                if (err)
+            connection.query(sql2, function (err1, result1) {
+                if (err1)
                 {
-                    console.log(err);
-                };
-                    res.redirect('/home')
+                    console.log(err1);
+                }
+                res.redirect('/home')
             });
         }
         else
@@ -316,19 +317,6 @@ app.post('/', isLoggedIn, (req,res)=>{
             }
             else
             {
-                // var sql = `SELECT storage FROM users WHERE ID = ${req.user.id}`;
-                // connection.query(sql, function (err, result) 
-                // {
-                //     if (err) throw err;
-                //     if((result[0].storage + (size)/1024)/1024>=1)
-                //     {
-                //         return res.status(200).send({status: 0, message: "limit"});
-                //     }
-                //     else
-                //     {
-                //     }
-                // })
-
                 file.mv(original+file.md5+'.'+format,(err)=>{
                     if (err)
                     {
