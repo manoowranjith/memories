@@ -225,7 +225,6 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    border-radius: 100%;
     margin-right: 20px;
 }
 .seperator{
@@ -315,7 +314,7 @@
 
 .images{
     margin:159.80px 0px 0px 200px;
-    width: calc(100vw-200px);
+    width: calc(100vw - 200px);
     background-color: rgb(255, 255, 255);
 }
 .image-type{
@@ -326,7 +325,7 @@
     padding:10px 40px;
     position: fixed;
     top:92px;
-    width: calc(100%-200px);
+    width: calc(100% - 200px);
     background-color: rgb(255, 255, 255);
     animation: faded 3s linear ;
     z-index: 100;
