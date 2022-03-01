@@ -1,7 +1,6 @@
 import React from "react";
 import hi from './files4.svg'
 import welcome from './welcome1.svg'
-import axios from 'axios'
 function Signin()
 {
     return(
